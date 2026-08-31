@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
 
@@ -13,7 +13,7 @@ class Detection:
     y1: float
     x2: float
     y2: float
-    timestamp: datetime
+    timestamp: datetime = field(default_factory=datetime.now)
 
 
 @dataclass
@@ -25,7 +25,7 @@ class Telemetry:
     pitch: float
     roll: float
     battery: Optional[float] = None
-    timestamp: datetime = datetime.now()
+    timestamp: datetime = field(default_factory=datetime.now)
 
 
 @dataclass
