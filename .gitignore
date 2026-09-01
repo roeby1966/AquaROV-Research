@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AquaROV runtime data
+recordings/
+snapshots/
+logs/
+
+# AI / ML artifacts
+models/
+weights/
+checkpoints/
+
+# Large media / datasets
+datasets/
+
+# Local development
+.vscode/
+.idea/
