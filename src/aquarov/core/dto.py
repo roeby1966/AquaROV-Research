@@ -1,24 +1,39 @@
+"""
+AquaROV Research - Data Transfer Objects
+
+Hardware-agnostic data structures shared across the AquaROV core.
+"""
+
+from __future__ import annotations
+
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
 
 
 @dataclass
-class Detection:
-    """Generic AI detection result."""
+class BoundingBox:
+    """Bounding box coordinates for an object detection."""
 
-    label: str
-    confidence: float
     x1: float
     y1: float
     x2: float
     y2: float
+
+
+@dataclass
+class Detection:
+    """A single AI object detection result."""
+
+    label: str
+    confidence: float
+    bbox: BoundingBox
     timestamp: datetime = field(default_factory=datetime.now)
 
 
 @dataclass
 class Telemetry:
-    """ROV telemetry data."""
+    """Current ROV telemetry data."""
 
     depth: float
     heading: float
@@ -30,19 +45,28 @@ class Telemetry:
 
 @dataclass
 class SensorReading:
-    """Generic underwater sensor reading."""
+    """A generic sensor measurement."""
 
     sensor_name: str
     value: float
     unit: str
-    timestamp: datetime
+    timestamp: datetime = field(default_factory=datetime.now)
 
 
 @dataclass
 class MissionStatus:
-    """Current AquaROV mission status."""
+    """Current status of an ROV mission."""
 
     mission_type: str
     mission_id: str
     active: bool
     elapsed_seconds: float
+
+
+__all__ = [
+    "BoundingBox",
+    "Detection",
+    "Telemetry",
+    "SensorReading",
+    "MissionStatus",
+    ]
