@@ -256,4 +256,4 @@ def test_unregister_camera_removes_camera() -> None:
         manager.get_state("cam-1")
         assert False, "Expected KeyError"
     except KeyError:
-        passaa
+        pass
