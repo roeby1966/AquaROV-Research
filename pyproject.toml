@@ -12,8 +12,10 @@ dependencies = [
     "numpy>=1.26",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+]
+
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.setuptools.package-data]
-aquarov = ["py.typed"]
