@@ -2,10 +2,9 @@
 Tests for AquaROV CameraManager.
 """
 
-from camera_manager import CameraManager, MemoryCameraBackend
-from dto import CameraChannel
-from inference_worker import InferenceFrame
-
+from aquarov.core.camera_manager import CameraManager, MemoryCameraBackend
+from aquarov.core.dto import CameraChannel
+from aquarov.core.inference_worker import InferenceFrame
 
 class FakeInferenceWorker:
     """Minimal fake inference worker for testing frame submission."""
