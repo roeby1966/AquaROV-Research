@@ -63,10 +63,20 @@ class MissionStatus:
     elapsed_seconds: float
 
 
+@dataclass
+class CameraChannel:
+    """Configuration and identity of an ROV camera channel."""
+
+    camera_id: str
+    name: str
+    source_type: str
+
+
 __all__ = [
     "BoundingBox",
     "Detection",
     "Telemetry",
     "SensorReading",
     "MissionStatus",
+    "CameraChannel",
     ]
