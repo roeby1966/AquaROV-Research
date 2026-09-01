@@ -53,8 +53,10 @@ Operator Console
      ↓
 Recording & Data
 
-The architecture is intended to
-allow hardware-specific implementations, AI models, and mission modules to evolve
+The architecture is intended
+to allow hardware-specific
+implementations, AI models,
+and mission modules to evolve
 independently while sharing the
 same core platform.
 Core Software
