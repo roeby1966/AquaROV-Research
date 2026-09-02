@@ -5,8 +5,8 @@ import pytest
 from aquarov.missions.base import MissionBase
 
 
-class TestMission(MissionBase):
-    mission_type = "test"
+class 
+DummyMission(MissionBase):
 
     def execute(self):
         self.start()
@@ -25,7 +25,7 @@ def test_mission_requires_mission_id() -> None:
 
 
 def test_mission_starts_inactive() -> None:
-    mission = TestMission("mission-001")
+    mission = DummyMission("mission-001")
 
     assert mission.active is False
     assert mission.started_at is None
@@ -34,7 +34,7 @@ def test_mission_starts_inactive() -> None:
 
 
 def test_start_activates_mission() -> None:
-    mission = TestMission("mission-001")
+    mission = DummyMission("mission-001")
 
     mission.start()
 
@@ -44,7 +44,7 @@ def test_start_activates_mission() -> None:
 
 
 def test_start_is_idempotent() -> None:
-    mission = TestMission("mission-001")
+    mission = DummyMission("mission-001")
 
     mission.start()
     first_started_at = mission.started_at
@@ -63,7 +63,7 @@ def test_add_observation_requires_active_mission() -> None:
 
 
 def test_add_observation_stores_copy() -> None:
-    mission = TestMission("mission-001")
+    mission = DummyMission("mission-001")
     observation = {"type": "fish", "count": 10}
 
     mission.start()
@@ -77,7 +77,7 @@ def test_add_observation_stores_copy() -> None:
 
 
 def test_stop_returns_successful_result() -> None:
-    mission = TestMission("mission-001")
+    mission = DummyMission("mission-001")
 
     mission.start()
     mission.add_observation(
@@ -103,7 +103,7 @@ def test_stop_returns_successful_result() -> None:
 
 
 def test_stop_inactive_mission_returns_failed_result() -> None:
-    mission = TestMission("mission-001")
+    mission = DummyMission("mission-001")
 
     result = mission.stop()
 
@@ -114,7 +114,7 @@ def test_stop_inactive_mission_returns_failed_result() -> None:
 
 
 def test_execute_runs_mission() -> None:
-    mission = TestMission("mission-001")
+    mission = DummyMission("mission-001")
 
     result = mission.execute()
 
