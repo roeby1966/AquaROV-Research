@@ -1,113 +1,96 @@
 # AquaROV Research
 
-## Modular AI-Enabled Underwater ROV Platform
+## Underwater ROV Research & Mission Software Framework
 
-AquaROV Research is an independent R&D project exploring modular underwater ROV systems enhanced with AI for underwater exploration, mapping, inspection, and marine monitoring.
+AquaROV Research is an open-source research repository for developing a
+hardware-agnostic software foundation for an intelligent underwater
+Remotely Operated Vehicle (ROV).
 
-The project is designed as a reusable software and AI foundation for a future-generation AquaROV platform, where different mission capabilities can operate on the same ROV system.
+The project focuses on building reusable mission, telemetry, data,
+recording, and infrastructure-inspection software components that can
+later be integrated with different underwater hardware platforms.
 
-## Mission Capabilities
+The software architecture is intentionally separated from specific
+hardware vendors, cameras, sensors, AI accelerators, navigation systems,
+and vehicle controllers.
 
-### Aquaculture Inspection
+---
 
-- Fish detection and counting
-- Fish activity monitoring
+## Project Vision
+
+AquaROV is being developed as a research foundation for an intelligent
+underwater inspection and monitoring system.
+
+The long-term objective is to enable an ROV to support missions such as:
+
+- Underwater infrastructure inspection
+- Aquaculture cage inspection
 - Net damage detection
 - Marine debris detection
-- Environmental sensor integration
-- Underwater inspection and monitoring
+- Fish monitoring
+- Environmental observation
+- Water-quality monitoring
+- Underwater recording and documentation
+- AI-assisted inspection
+- Telemetry and mission monitoring
+- Future autonomous or semi-autonomous operation
 
-### Shipwreck Survey
+The repository focuses on the software architecture and mission logic
+rather than tying the system to a particular ROV hardware configuration.
 
-- Underwater object detection
-- Shipwreck structure recognition
-- Photogrammetry
-- 3D reconstruction
-- Survey coverage tracking
-- Sonar-assisted mapping
+---
 
-### Other Research Applications
+## Design Philosophy
 
-- Marine ecosystem monitoring
-- Underwater infrastructure inspection
-- Marine species recognition
-- Environmental data collection
-- Underwater mapping and exploration
+### Hardware Agnostic
+
+The mission layer should not depend directly on:
+
+- Specific cameras
+- Specific thrusters
+- Specific flight controllers
+- Specific sonar systems
+- Specific AI accelerators
+- Specific navigation hardware
+- Specific communication hardware
+
+Hardware adapters can be connected at a later stage.
+
+This allows the same mission software to operate across different
+underwater platforms.
+
+---
 
 ## Architecture
 
-AquaROV follows a modular architecture:
+The project follows a modular architecture:
 
 ```text
-ROV Hardware
-     ↓
-Sensors & Telemetry
-     ↓
-Perception
-     ↓
-AI Inference
-     ↓
-Mission Modules
-     ↓
-Operator Console
-     ↓
-Recording & Data
-
-The architecture is intended
-to allow hardware-specific
-implementations, AI models,
-and mission modules to evolve
-independently while sharing the
-same core platform.
-Core Software
-The current repository
-establishes the hardware-agnostic
-core software architecture,
-including:
-Data Transfer Objects (DTOs)
-Asynchronous AI inference worker
-Camera management
-ROV state management
-Sensor management
-Telemetry management
-The core is designed so that
-hardware drivers and AI
-accelerator implementations can
-be connected later without
-requiring major changes to the
-core architecture.
-Testing
-The project uses pytest for
-automated testing.
-The current test suite covers the
-core modules and is continuously
-verified through GitHub Actions.
-Current status:
-54 tests passing
-Project Status
-AquaROV Research is in the early
-research and development stage.
-The current priority is
-establishing a reliable, modular
-software foundation that can
-support future AI, sensor,
-navigation, mission-control,
-recording, database, and
-operator-console capabilities.
-Future development will add
-mission-specific capabilities on
-top of the reusable core
-architecture.
-Collaboration
-AquaROV Research is an
-independent R&D project and is
-open to future collaboration with:
-Researchers
-Universities
-Engineers
-Marine scientists
-AI researchers
-Underwater robotics communities
-License
-This project is released under
-the MIT License.
+                    AquaROV Application
+                           │
+                           ▼
+                    Mission Control
+                           │
+          ┌────────────────┼────────────────┐
+          │                │                │
+          ▼                ▼                ▼
+      Telemetry        Recording        Inspection
+       Manager          Manager           Missions
+          │                │                │
+          └────────────────┼────────────────┘
+                           │
+                           ▼
+                     Core Services
+                           │
+              ┌────────────┼────────────┐
+              │            │            │
+              ▼            ▼            ▼
+           Sensors       Cameras       AI
+              │            │            │
+              └────────────┼────────────┘
+                           │
+                           ▼
+                    Hardware Adapters
+                           │
+                           ▼
+                    ROV Hardware
