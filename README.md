@@ -70,24 +70,24 @@ The project follows a modular architecture:
                            │
                            ▼
                     Mission Control
-                           │
-          ┌────────────────┼────────────────┐
-          │                │                │
-          ▼                ▼                ▼
+                          │
+          ┌─────────┼──────────┐
+          │              │                │
+          ▼              ▼                ▼
       Telemetry        Recording        Inspection
        Manager          Manager           Missions
-          │                │                │
-          └────────────────┼────────────────┘
+          │               │                │
+          └─────── ──┼──────────┘
                            │
                            ▼
                      Core Services
                            │
-              ┌────────────┼────────────┐
-              │            │            │
-              ▼            ▼            ▼
+              ┌───────┼───────┐
+              │           │           │
+              ▼           ▼           ▼
            Sensors       Cameras       AI
-              │            │            │
-              └────────────┼────────────┘
+              │           │           │
+              ────────┼───────┘
                            │
                            ▼
                     Hardware Adapters
