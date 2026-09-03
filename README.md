@@ -67,8 +67,8 @@ The project follows a modular architecture:
 
 ```text
                     AquaROV Application
-                           │
-                           ▼
+                          │
+                          ▼
                     Mission Control
                           │
           ┌─────────┼──────────┐
